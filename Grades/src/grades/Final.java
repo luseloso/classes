@@ -12,22 +12,20 @@ package grades;
  */
 public class Final 
 {
-    int count = 1;
-    float score = 100;
-    float weight = 20;
+    int count;
+    float score;
+    float weight;
         
     public Final(){}
-    
-    public int getCount()
-    {    
-           return this.count;
-    }    
-    public float getScore()
-    {    
-           return this.score;
-    }    
-    public float getWeight()
+    public Final(float score)
     {
-        return this.weight;
+        this.score = score;
+        this.count = 1;
+        this.weight = 36;
     }
+    public float getScore()
+    {
+        return score;
+    }
+    
 }

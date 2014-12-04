@@ -16,6 +16,10 @@ public class Grades
     int count;
     float score, weight;
     public Grades(){}
+    public Grades(String type, Object x)
+    {
+        
+    }
     public Grades (String type, int count, float score, float weight)
     {     
         this.type = type;

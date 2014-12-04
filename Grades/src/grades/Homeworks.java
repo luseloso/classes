@@ -12,22 +12,16 @@ package grades;
  */
 public class Homeworks 
 {
-    int count = 1;
-    float score = 100;
-    float weight = 50;
+    int count;
+    float score;
+    float weight;
         
     public Homeworks(){}
-    
-    public int getCount()
-    {    
-           return this.count;
-    }    
-    public float getScore()
-    {    
-           return this.score;
-    }
-    public float getWeight()
+    public Homeworks(float score)
     {
-        return this.weight;
+        this.score = score;
+        this.count = 1;
+        this.weight = 4;
     }
+
 }

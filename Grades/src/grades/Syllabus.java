@@ -20,90 +20,44 @@ public class Syllabus
     // We are going to need the user inputs for the grades breakdown
     // We already know the highest grade in the class is 100%
     // For now all the values are generic to test the stuff
-
+    // The grade breakdowns for now are
+    // Hw       50%
+    // Midterms 20%
+    // Final    30%
     private int classtotal = 100;
+    public String userID, studentEmail, userPassword;
+    public float homeworkScores, finalScore, midtermScore;
+    
+    public Syllabus(float homeworkScores, float midtermScore, float finalScore)
+    {
+        this.homeworkScores = homeworkScores;
+        this.midtermScore = midtermScore;
+        this.finalScore = finalScore;
+    }
     
     // Created a Map that contains the grades break down
     
     private Map<String, Grades> syllabus = new HashMap<>();
     private LinkedList<String> categories = new LinkedList<>();
     
-    
-    // create a new instance of the class with the student input
-    // **Implement the 'scan fucntion'**
-    private Homeworks homeworkInput = new Homeworks();
-    // create a new instance of the class with the student input
-    // **Implement the 'scan fucntion'**
-    private Final finalInput = new Final();   
-    // create a new instance of the class with the student input
-    // **Implement the 'scan fucntion'**
-    private Midterms midtermsInput = new Midterms();
-    
     public void SyllabusInput()
-    {                 
-        syllabus.put("Midterms", new Grades("Midterms", getCount("Midterms"), getScore("Midterms"), getWeight("Midterms")));
-        syllabus.put("Homeworks", new Grades("Homeworks", getCount("Homeworks"), getScore("Homeworks"), getWeight("Homeworks")));
-        syllabus.put("Final", new Grades("Final", 1, getScore("Final"), getWeight("Final")));
+    {        
+    // create a new instance of the class with the student input
+    // **Implement the 'scan fucntion'**
+        Homeworks homeworkInput = new Homeworks(this.homeworkScores);
+    // create a new instance of the class with the student input
+    // **Implement the 'scan fucntion'**
+        Final finalInput = new Final(this.finalScore);   
+    // create a new instance of the class with the student input
+    // **Implement the 'scan fucntion'**
+        Midterms midtermsInput = new Midterms(this.midtermScore);
+    
+        syllabus.put("Midterms", new Grades("Midterms", midtermsInput.count, midtermsInput.score, midtermsInput.weight ));
+        syllabus.put("Homeworks", new Grades("Homeworks", homeworkInput.count, homeworkInput.score, homeworkInput.weight));
+        syllabus.put("Final", new Grades("Final", finalInput.count, finalInput.score, finalInput.weight));
         categories.add("Midterms");
         categories.add("Homeworks");
         categories.add("Final");
-    }
-        
-    public int getCount(String type)
-    {
-        int result = 0;
-        if (type == "Homeworks")
-        {            
-            return homeworkInput.getCount();
-        }
-        if (type == "Final")
-        {            
-            return finalInput.getCount();
-        }
-        if (type == "Midterms")
-        {            
-            return midtermsInput.getCount();
-        }
-        
-        return result;
-    }
-    
-    public float getScore(String type)
-    {
-        float result = 0;
-        if (type == "Homeworks")
-        {            
-            return homeworkInput.getScore();
-        }
-        if (type == "Final")
-        {            
-            return finalInput.getScore();
-        }
-        if (type == "Midterms")
-        {            
-            return midtermsInput.getScore();
-        }
-        
-        return result;
-    }
-    
-    public float getWeight(String type)
-    {
-        int result = 0;
-        if (type == "Homeworks")
-        {            
-            return homeworkInput.getWeight();
-        }
-        if (type == "Final")
-        {            
-            return finalInput.getWeight();
-        }
-        if (type == "Midterms")
-        {            
-            return midtermsInput.getWeight();
-        }
-        
-        return result;
     }
     
     public float classTotal()
@@ -113,6 +67,8 @@ public class Syllabus
         for (int i = 0; i < categories.size(); i++) 
         {
             Grades current = syllabus.get(categories.get(i));
+            //System.out.println(categories.get(i));
+            //System.out.println(current.score);
             result += (current.score * current.weight/100);
         }
         

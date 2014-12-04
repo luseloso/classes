@@ -18,12 +18,14 @@ public class Application {
     public static void main(String[] args) 
     {
         Application app = new Application(){};
-        app.runTest();
+        MainForm form = new MainForm();
+        form.setVisible(true);
+        //app.runTest();
     }
 
     private void runTest() 
     {
-        Syllabus test = new Syllabus();
+        Syllabus test = new Syllabus(100,100,100);
         test.SyllabusInput();
         System.out.println("Course total: " + test.classTotal());
     }

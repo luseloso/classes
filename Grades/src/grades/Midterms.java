@@ -12,22 +12,15 @@ package grades;
  */
 public class Midterms 
 {
-    int count = 1;
-    float score = 100;
-    float weight = 30;
+    int count;
+    float score;
+    float weight;
         
     public Midterms(){}
-    
-    public int getCount()
-    {    
-           return this.count;
-    }    
-    public float getScore()
-    {    
-           return this.score;
-    }
-    public float getWeight()
+    public Midterms(float score)
     {
-        return this.weight;
+        this.score = score;
+        this.count = 1;
+        this.weight = 60;
     }
 }
