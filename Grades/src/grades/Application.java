@@ -15,8 +15,17 @@ public class Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) 
+    {
+        Application app = new Application(){};
+        app.runTest();
+    }
+
+    private void runTest() 
+    {
+        Syllabus test = new Syllabus();
+        test.SyllabusInput();
+        System.out.println("Course total: " + test.classTotal());
     }
     
 }
